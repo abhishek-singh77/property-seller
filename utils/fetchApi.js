@@ -1,14 +1,18 @@
 import axios from "axios";
+const dotenv = require('dotenv');
+  
+dotenv.config();
+  
 
-export const baseUrl = 'https://bayut.p.rapidapi.com'
+export const baseUrl = 'https://bayut.p.rapidapi.com';
 
 export const fetchApi = async (url) => {
-    const {data} = await axios.get((url), {
-        headers: {
-            'x-rapidapi-host': 'bayut.p.rapidapi.com',
-            'x-rapidapi-key': 'fe0dad3b60mshb17d2e3811fe335p1225bejsn3deabf869a31'
-          }
-    });
-    return data;
+  const { data } = await axios.get((url), {
+    headers: {
+      'x-rapidapi-host': process.env.HOST,
+      'x-rapidapi-key': process.env.NEXT_PUBLIC_RAPID_API_KEY
+    },
+  });
+    
+  return data;
 }
-
